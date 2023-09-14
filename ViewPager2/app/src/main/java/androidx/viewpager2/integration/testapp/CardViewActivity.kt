@@ -17,7 +17,9 @@
 package androidx.viewpager2.integration.testapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager2.integration.testapp.cards.CardViewAdapter
+import androidx.viewpager2.integration.testapp.tag.CardViewActivity_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 /**
@@ -26,6 +28,11 @@ import androidx.viewpager2.widget.ViewPager2
  * @see CardFragmentActivity for an example of using {@link ViewPager2} with Fragments.
  */
 open class CardViewActivity : BaseCardActivity() {
+
+    init {
+        Log.i(CardViewActivity_TAG, "objek dibuat")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewPager.adapter = CardViewAdapter()

@@ -18,16 +18,22 @@ package androidx.viewpager2.integration.testapp
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.integration.testapp.cards.CardViewAdapter
+import androidx.viewpager2.integration.testapp.tag.FakeDragActivity_TAG
 import androidx.viewpager2.widget.ViewPager2
 import java.util.Locale
 
 class FakeDragActivity : FragmentActivity() {
+
+    init {
+        Log.i(FakeDragActivity_TAG, "objek dibuat")
+    }
 
     private lateinit var viewPager: ViewPager2
     private var landscape = false

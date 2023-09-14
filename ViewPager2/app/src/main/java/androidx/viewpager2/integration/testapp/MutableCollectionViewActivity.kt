@@ -16,6 +16,7 @@
 
 package androidx.viewpager2.integration.testapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,9 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.integration.testapp.tag.ClickRegistry_TAG
+import androidx.viewpager2.integration.testapp.tag.MutableCollectionViewActivity_TAG
+import androidx.viewpager2.integration.testapp.tag.PageViewHolder_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 /**
@@ -31,6 +35,11 @@ import androidx.viewpager2.widget.ViewPager2
  * represents pages as [View]s.
  */
 class MutableCollectionViewActivity : MutableCollectionBaseActivity() {
+
+    init{
+        Log.i(MutableCollectionViewActivity_TAG, "objek dibuat")
+    }
+
     override fun createViewPagerAdapter(): RecyclerView.Adapter<*> {
         val items = items // avoids resolving the ViewModel multiple times
         val clickRegistry: ClickRegistry by viewModels()
@@ -53,6 +62,11 @@ class PageViewHolder(parent: ViewGroup) :
     RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_mutable_collection, parent, false)
     ) {
+
+    init{
+        Log.i(PageViewHolder_TAG, "objek dibuat")
+    }
+
     private val textViewItemId: TextView = itemView.findViewById(R.id.textViewItemText)
     private val textViewCount: TextView = itemView.findViewById(R.id.textViewCount)
     private val buttonCountIncrease: Button = itemView.findViewById(R.id.buttonCountIncrease)
@@ -73,6 +87,11 @@ class PageViewHolder(parent: ViewGroup) :
  * Stores click counts for items. Items are identified by an id.
  */
 class ClickRegistry : ViewModel() {
+
+    init{
+        Log.i(ClickRegistry_TAG, "objek dibuat")
+    }
+
     private val clickCount = mutableMapOf<Long, Int>()
     fun getClickCount(itemId: Long): Int = clickCount[itemId] ?: 0
     fun registerClick(itemId: Long) = clickCount.set(itemId, 1 + getClickCount(itemId))

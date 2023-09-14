@@ -17,13 +17,25 @@
 package androidx.viewpager2.integration.testapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.integration.testapp.tag.Adapter_TAG
+import androidx.viewpager2.integration.testapp.tag.PageTransformerActivity_TAG
+import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_Adapter_TAG
+import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_TAG
+import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_ViewHolder_TAG
+import androidx.viewpager2.integration.testapp.tag.ViewHolder_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 class PreviewPagesActivity : FragmentActivity() {
+
+    init {
+        Log.i(PreviewPagesActivity_TAG, "objek dibuat")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewpager2)
@@ -45,9 +57,18 @@ class PreviewPagesActivity : FragmentActivity() {
 
     class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_preview_pages, parent, false)
-    )
+    ) {
+        init {
+            Log.i(PreviewPagesActivity_ViewHolder_TAG, "objek dibuat")
+        }
+    }
 
     class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+        init {
+            Log.i(PreviewPagesActivity_Adapter_TAG, "objek dibuat")
+        }
+
         override fun getItemCount(): Int {
             return 10
         }

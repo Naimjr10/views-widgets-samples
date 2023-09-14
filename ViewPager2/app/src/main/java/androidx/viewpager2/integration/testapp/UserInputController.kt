@@ -16,10 +16,17 @@
 
 package androidx.viewpager2.integration.testapp
 
+import android.util.Log
 import android.widget.CheckBox
+import androidx.viewpager2.integration.testapp.tag.UserInputController_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 class UserInputController(private val viewPager: ViewPager2, private val disableBox: CheckBox) {
+
+    init {
+        Log.i(UserInputController_TAG, "objek dibuat")
+    }
+
     fun setUp() {
         disableBox.isChecked = !viewPager.isUserInputEnabled
         disableBox.setOnCheckedChangeListener { _, isDisabled ->

@@ -18,10 +18,12 @@ package androidx.viewpager2.integration.testapp
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
+import androidx.viewpager2.integration.testapp.tag.NestedScrollableHost_TAG
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import kotlin.math.absoluteValue
@@ -36,6 +38,7 @@ import kotlin.math.sign
  * (e.g. a horizontal RecyclerView in a vertical RecyclerView in a horizontal ViewPager2).
  */
 class NestedScrollableHost : FrameLayout {
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
@@ -54,6 +57,8 @@ class NestedScrollableHost : FrameLayout {
     private val child: View? get() = if (childCount > 0) getChildAt(0) else null
 
     init {
+        Log.i(NestedScrollableHost_TAG, "objek dibuat")
+
         touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     }
 

@@ -16,11 +16,19 @@
 
 package androidx.viewpager2.integration.testapp.cards
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.integration.testapp.tag.CardViewAdapter_TAG
+import androidx.viewpager2.integration.testapp.tag.CardViewHolder_TAG
 
 class CardViewAdapter : RecyclerView.Adapter<CardViewHolder>() {
+
+    init {
+        Log.i(CardViewAdapter_TAG, "objek dibuat")
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(CardView(LayoutInflater.from(parent.context), parent))
     }
@@ -36,6 +44,11 @@ class CardViewAdapter : RecyclerView.Adapter<CardViewHolder>() {
 
 class CardViewHolder internal constructor(private val cardView: CardView) :
     RecyclerView.ViewHolder(cardView.view) {
+
+    init {
+        Log.i(CardViewHolder_TAG, "objek dibuat")
+    }
+
     internal fun bind(card: Card) {
         cardView.bind(card)
     }

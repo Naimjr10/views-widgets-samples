@@ -16,10 +16,12 @@
 
 package androidx.viewpager2.integration.testapp
 
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.viewpager2.integration.testapp.tag.OrientationController_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 /**
@@ -27,6 +29,11 @@ import androidx.viewpager2.widget.ViewPager2
  * when an orientation is selected.
  */
 class OrientationController(private val viewPager: ViewPager2, private val spinner: Spinner) {
+
+    init {
+        Log.i(OrientationController_TAG, "objek dibuat")
+    }
+
     fun setUp() {
         val orientation = viewPager.orientation
         val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item,

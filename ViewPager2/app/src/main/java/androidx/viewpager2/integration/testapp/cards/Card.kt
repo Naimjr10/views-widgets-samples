@@ -17,12 +17,18 @@
 package androidx.viewpager2.integration.testapp.cards
 
 import android.os.Bundle
+import android.util.Log
 import androidx.core.text.BidiFormatter
+import androidx.viewpager2.integration.testapp.tag.Card_TAG
 
 /**
  * Playing card
  */
 class Card private constructor(val suit: String, val value: String) {
+
+    init {
+        Log.i(Card_TAG, "Objek dibuat")
+    }
 
     val cornerLabel: String
         get() = value + "\n" + suit

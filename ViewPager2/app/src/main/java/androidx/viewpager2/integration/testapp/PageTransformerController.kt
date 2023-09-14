@@ -16,12 +16,15 @@
 
 package androidx.viewpager2.integration.testapp
 
+import android.util.Log
 import android.util.TypedValue
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.viewpager2.integration.testapp.tag.PageTransformerActivity_TAG
+import androidx.viewpager2.integration.testapp.tag.PageTransformerController_TAG
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
@@ -31,6 +34,11 @@ import androidx.viewpager2.widget.ViewPager2
  * Propagates user selection to the [ViewPager2].
  */
 class PageTransformerController(private val viewPager: ViewPager2, private val spinner: Spinner) {
+
+    init {
+        Log.i(PageTransformerController_TAG, "objek dibuat")
+    }
+
     fun setUp() {
         val transformers = listOf(
             "None" to ViewPager2.PageTransformer { _, _ -> /* no op */ },

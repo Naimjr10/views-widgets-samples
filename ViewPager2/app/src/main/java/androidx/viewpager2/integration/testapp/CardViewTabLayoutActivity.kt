@@ -17,11 +17,17 @@
 package androidx.viewpager2.integration.testapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager2.integration.testapp.cards.Card
+import androidx.viewpager2.integration.testapp.tag.CardViewTabLayoutActivity_TAG
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class CardViewTabLayoutActivity : CardViewActivity() {
+
+    init {
+        Log.i(CardViewTabLayoutActivity_TAG, "objek dibuat")
+    }
 
     private lateinit var tabLayout: TabLayout
 

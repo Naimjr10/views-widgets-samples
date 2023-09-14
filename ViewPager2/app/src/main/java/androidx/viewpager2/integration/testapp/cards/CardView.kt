@@ -16,6 +16,7 @@
 
 package androidx.viewpager2.integration.testapp.cards
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 
 import androidx.viewpager2.integration.testapp.R
+import androidx.viewpager2.integration.testapp.tag.CardView_TAG
 
 /** Inflates and populates a [View] representing a [Card]  */
 class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
@@ -33,6 +35,8 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
     private val textCorner2: TextView
 
     init {
+        Log.i(CardView_TAG, "objek dibuat")
+
         textSuite = view.findViewById(R.id.label_center)
         textCorner1 = view.findViewById(R.id.label_top)
         textCorner2 = view.findViewById(R.id.label_bottom)

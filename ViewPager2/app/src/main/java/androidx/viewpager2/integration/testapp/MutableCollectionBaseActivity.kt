@@ -18,6 +18,7 @@ package androidx.viewpager2.integration.testapp
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -30,12 +31,19 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.integration.testapp.tag.ItemsViewModel_TAG
+import androidx.viewpager2.integration.testapp.tag.MutableCollectionBaseActivity_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 /**
  * Shows how to use notifyDataSetChanged with [ViewPager2]
  */
 abstract class MutableCollectionBaseActivity : FragmentActivity() {
+
+    init{
+        Log.i(MutableCollectionBaseActivity_TAG, "objek dibuat")
+    }
+
     private lateinit var buttonAddAfter: Button
     private lateinit var buttonAddBefore: Button
     private lateinit var buttonGoTo: Button
@@ -129,6 +137,11 @@ abstract class MutableCollectionBaseActivity : FragmentActivity() {
 
 /** A very simple collection of items. Optimized for simplicity (i.e. not performance). */
 class ItemsViewModel : ViewModel() {
+
+    init{
+        Log.i(ItemsViewModel_TAG, "objek dibuat")
+    }
+
     private var nextValue = 1L
 
     private val items = (1..9).map { longToItem(nextValue++) }.toMutableList()

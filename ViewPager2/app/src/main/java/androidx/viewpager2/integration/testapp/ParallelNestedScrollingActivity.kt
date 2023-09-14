@@ -19,6 +19,7 @@ package androidx.viewpager2.integration.testapp
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -29,10 +30,21 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivity_RvAdapter_TAG
+import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivity_TAG
+import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivity_VpAdapter_TAG
+import androidx.viewpager2.integration.testapp.tag.RvAdapter_ViewHolder_TAG
+import androidx.viewpager2.integration.testapp.tag.VpAdapter_TAG
+import androidx.viewpager2.integration.testapp.tag.VpAdapter_ViewHolder_TAG
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 
 class ParallelNestedScrollingActivity : Activity() {
+
+    init{
+        Log.i(ParallelNestedScrollingActivity_TAG, "objek dibuat")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewPager = ViewPager2(this).apply {
@@ -44,6 +56,11 @@ class ParallelNestedScrollingActivity : Activity() {
     }
 
     class VpAdapter : RecyclerView.Adapter<VpAdapter.ViewHolder>() {
+
+        init{
+            Log.i(ParallelNestedScrollingActivity_VpAdapter_TAG, "objek dibuat")
+        }
+
         override fun getItemCount(): Int {
             return 4
         }
@@ -71,6 +88,11 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+            init{
+                Log.i(VpAdapter_ViewHolder_TAG, "objek dibuat")
+            }
+
             val title: TextView = itemView.findViewById(R.id.page_title)
             val rv1: RecyclerView = itemView.findViewById(R.id.first_rv)
             val rv2: RecyclerView = itemView.findViewById(R.id.second_rv)
@@ -78,6 +100,11 @@ class ParallelNestedScrollingActivity : Activity() {
     }
 
     class RvAdapter(private val orientation: Int) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+
+        init {
+            Log.i(ParallelNestedScrollingActivity_RvAdapter_TAG, "objek dibuat")
+        }
+
         override fun getItemCount(): Int {
             return 40
         }
@@ -104,7 +131,11 @@ class ParallelNestedScrollingActivity : Activity() {
             }
         }
 
-        class ViewHolder(val tv: TextView) : RecyclerView.ViewHolder(tv)
+        class ViewHolder(val tv: TextView) : RecyclerView.ViewHolder(tv) {
+            init {
+                Log.i(RvAdapter_ViewHolder_TAG, "objek dibuat")
+            }
+        }
     }
 }
 

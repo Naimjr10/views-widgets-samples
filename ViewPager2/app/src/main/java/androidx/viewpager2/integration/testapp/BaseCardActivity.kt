@@ -16,7 +16,9 @@
 
 package androidx.viewpager2.integration.testapp
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
@@ -24,15 +26,21 @@ import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.integration.testapp.cards.Card
+import androidx.viewpager2.integration.testapp.tag.BaseCardActivity_TAG
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_VERTICAL
+import javax.security.auth.Destroyable
 
 /**
  * Base class for the two activities in the demo. Sets up the list of cards and implements UI to
  * jump to arbitrary cards using setCurrentItem, either with or without smooth scrolling.
  */
 abstract class BaseCardActivity : FragmentActivity() {
+
+    init {
+        Log.i(BaseCardActivity_TAG, "objek dibuat")
+    }
 
     protected lateinit var viewPager: ViewPager2
     private lateinit var cardSelector: Spinner
@@ -100,4 +108,5 @@ abstract class BaseCardActivity : FragmentActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         return adapter
     }
+
 }
