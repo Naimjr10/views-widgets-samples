@@ -22,12 +22,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.integration.testapp.tag.Adapter_TAG
-import androidx.viewpager2.integration.testapp.tag.PageTransformerActivity_TAG
 import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_Adapter_TAG
 import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_TAG
 import androidx.viewpager2.integration.testapp.tag.PreviewPagesActivity_ViewHolder_TAG
-import androidx.viewpager2.integration.testapp.tag.ViewHolder_TAG
 import androidx.viewpager2.widget.ViewPager2
 
 class PreviewPagesActivity : FragmentActivity() {
@@ -37,6 +34,8 @@ class PreviewPagesActivity : FragmentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(PreviewPagesActivity_TAG, "PreviewPagesActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewpager2)
         findViewById<ViewPager2>(R.id.view_pager).apply {
@@ -70,14 +69,23 @@ class PreviewPagesActivity : FragmentActivity() {
         }
 
         override fun getItemCount(): Int {
+            Log.i(PreviewPagesActivity_Adapter_TAG,
+                "PreviewPagesActivityAdapter.getItemCount()")
+
             return 10
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            Log.i(PreviewPagesActivity_Adapter_TAG,
+                "PreviewPagesActivityAdapter.onCreateViewHolder()")
+
             return ViewHolder(parent)
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            Log.i(PreviewPagesActivity_Adapter_TAG,
+                "PreviewPagesActivityAdapter.onBindViewHolder()")
+
             holder.itemView.tag = position
         }
     }

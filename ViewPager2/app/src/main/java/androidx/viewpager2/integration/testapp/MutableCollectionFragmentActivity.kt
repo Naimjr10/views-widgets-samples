@@ -44,6 +44,9 @@ class MutableCollectionFragmentActivity : MutableCollectionBaseActivity() {
     }
 
     override fun createViewPagerAdapter(): RecyclerView.Adapter<*> {
+        Log.i(MutableCollectionFragmentActivity_TAG,
+            "MutableCollectionFragmentActivity.createViewPagerAdapter()")
+
         val items = items // avoids resolving the ViewModel multiple times
         return object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): PageFragment {
@@ -73,6 +76,8 @@ class PageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.i(PageFragment_TAG, "PageFragment.onCreateView()")
+
         val view = inflater.inflate(R.layout.item_mutable_collection, container, false)
 
         textViewItemText = view.findViewById(R.id.textViewItemText)
@@ -100,19 +105,26 @@ class PageFragment : Fragment() {
      (when items are added or removed).
      */
     override fun onSaveInstanceState(outState: Bundle) {
+        Log.i(PageFragment_TAG, "PageFragment.onSaveInstanceState()")
+
         outState.putInt(KEY_CLICK_COUNT, clickCount())
     }
 
     private fun clickCount(): Int {
+        Log.i(PageFragment_TAG, "PageFragment.clickCount()")
+
         return "${textViewCount.text}".toInt()
     }
 
     companion object {
-        fun create(itemText: String) =
-            PageFragment().apply {
+        fun create(itemText: String): PageFragment {
+            Log.i(PageFragment_TAG, "PageFragment.Companion.create()")
+
+            return PageFragment().apply {
                 arguments = Bundle(1).apply {
                     putString(KEY_ITEM_TEXT, itemText)
                 }
             }
+        }
     }
 }

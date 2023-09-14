@@ -34,7 +34,6 @@ import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivi
 import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivity_TAG
 import androidx.viewpager2.integration.testapp.tag.ParallelNestedScrollingActivity_VpAdapter_TAG
 import androidx.viewpager2.integration.testapp.tag.RvAdapter_ViewHolder_TAG
-import androidx.viewpager2.integration.testapp.tag.VpAdapter_TAG
 import androidx.viewpager2.integration.testapp.tag.VpAdapter_ViewHolder_TAG
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
@@ -46,6 +45,9 @@ class ParallelNestedScrollingActivity : Activity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(ParallelNestedScrollingActivity_TAG,
+            "ParallelNestedScrollingActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         val viewPager = ViewPager2(this).apply {
             layoutParams = matchParent()
@@ -62,11 +64,17 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         override fun getItemCount(): Int {
+            Log.i(ParallelNestedScrollingActivity_VpAdapter_TAG,
+                "ParallelNestedScrollingActivity.VpAdapter.getItemCount()")
+
             return 4
         }
 
         @SuppressLint("ResourceType")
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            Log.i(ParallelNestedScrollingActivity_VpAdapter_TAG,
+                "ParallelNestedScrollingActivity.VpAdapter.onCreateViewHolder()")
+
             val inflater = LayoutInflater.from(parent.context)
             val root = inflater.inflate(R.layout.item_nested_recyclerviews, parent, false)
             return ViewHolder(root).apply {
@@ -76,6 +84,9 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            Log.i(ParallelNestedScrollingActivity_VpAdapter_TAG,
+                "ParallelNestedScrollingActivity.VpAdapter.onBindViewHolder()")
+
             with(holder) {
                 title.text = title.context.getString(R.string.page_position, adapterPosition)
                 itemView.setBackgroundResource(PAGE_COLORS[position % PAGE_COLORS.size])
@@ -83,6 +94,9 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         private fun RecyclerView.setUpRecyclerView(orientation: Int) {
+            Log.i(ParallelNestedScrollingActivity_VpAdapter_TAG,
+                "ParallelNestedScrollingActivity.VpAdapter.RecyclerView.setUpRecyclerView()")
+
             layoutManager = LinearLayoutManager(context, orientation, false)
             adapter = RvAdapter(orientation)
         }
@@ -106,10 +120,16 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         override fun getItemCount(): Int {
+            Log.i(ParallelNestedScrollingActivity_RvAdapter_TAG,
+                "ParallelNestedScrollingActivity.RvAdapter.getItemCount()")
+
             return 40
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            Log.i(ParallelNestedScrollingActivity_RvAdapter_TAG,
+                "ParallelNestedScrollingActivity.RvAdapter.onCreateViewHolder()")
+
             val tv = TextView(parent.context)
             tv.layoutParams = matchParent().apply {
                 if (orientation == RecyclerView.HORIZONTAL) {
@@ -125,6 +145,9 @@ class ParallelNestedScrollingActivity : Activity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            Log.i(ParallelNestedScrollingActivity_RvAdapter_TAG,
+                "ParallelNestedScrollingActivity.RvAdapter.onBindViewHolder()")
+
             with(holder) {
                 tv.text = tv.context.getString(R.string.item_position, adapterPosition)
                 tv.setBackgroundResource(CELL_COLORS[position % CELL_COLORS.size])

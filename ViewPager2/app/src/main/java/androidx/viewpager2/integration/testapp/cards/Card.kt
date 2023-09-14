@@ -35,12 +35,16 @@ class Card private constructor(val suit: String, val value: String) {
 
     /** Use in conjunction with [Card.fromBundle]  */
     fun toBundle(): Bundle {
+        Log.i(Card_TAG, "Card.toBundle()")
+
         val args = Bundle(1)
         args.putStringArray(ARGS_BUNDLE, arrayOf(suit, value))
         return args
     }
 
     override fun toString(): String {
+        Log.i(Card_TAG, "Card.toString()")
+
         val bidi = BidiFormatter.getInstance()
         if (!bidi.isRtlContext) {
             return bidi.unicodeWrap("$value $suit")
@@ -59,11 +63,15 @@ class Card private constructor(val suit: String, val value: String) {
         }
 
         fun List<Card>.find(value: String, suit: String): Card? {
+            Log.i(Card_TAG, "Card.Companion.List<Card>.find()")
+
             return find { it.value == value && it.suit == suit }
         }
 
         /** Use in conjunction with [Card.toBundle]  */
         fun fromBundle(bundle: Bundle): Card {
+            Log.i(Card_TAG, "Card.Companion.fromBundle()")
+
             val spec = bundle.getStringArray(ARGS_BUNDLE)
             return Card(spec!![0], spec[1])
         }

@@ -38,6 +38,8 @@ class BrowseActivity : ListActivity() {
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(BrowseActivity_TAG, "BrowseActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
 
         listAdapter = SimpleAdapter(this, getData(),
@@ -47,6 +49,8 @@ class BrowseActivity : ListActivity() {
     }
 
     private fun getData(): List<Map<String, Any>> {
+        Log.i(BrowseActivity_TAG, "BrowseActivity.getData()")
+
         val myData = mutableListOf<Map<String, Any>>()
 
         myData.add(mapOf("title" to "ViewPager2 with Views",
@@ -71,10 +75,15 @@ class BrowseActivity : ListActivity() {
         return myData
     }
 
-    private fun activityToIntent(activity: String): Intent =
-            Intent(Intent.ACTION_VIEW).setClassName(this.packageName, activity)
+    private fun activityToIntent(activity: String): Intent {
+        Log.i(BrowseActivity_TAG, "BrowseActivity.activityToIntent()")
+
+        return Intent(Intent.ACTION_VIEW).setClassName(this.packageName, activity)
+    }
 
     override fun onListItemClick(listView: ListView, view: View, position: Int, id: Long) {
+        Log.i(BrowseActivity_TAG, "BrowseActivity.onListItemClick()")
+
         val map = listView.getItemAtPosition(position) as Map<*, *>
 
         val intent = Intent(map["intent"] as Intent)

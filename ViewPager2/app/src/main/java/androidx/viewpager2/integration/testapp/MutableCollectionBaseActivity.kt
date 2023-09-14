@@ -53,6 +53,8 @@ abstract class MutableCollectionBaseActivity : FragmentActivity() {
     private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(MutableCollectionBaseActivity_TAG, "MutableCollectionBaseActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mutable_collection)
 
@@ -146,14 +148,50 @@ class ItemsViewModel : ViewModel() {
 
     private val items = (1..9).map { longToItem(nextValue++) }.toMutableList()
 
-    fun getItemById(id: Long): String = items.first { itemToLong(it) == id }
-    fun itemId(position: Int): Long = itemToLong(items[position])
-    fun contains(itemId: Long): Boolean = items.any { itemToLong(it) == itemId }
-    fun addNewAt(position: Int) = items.add(position, longToItem(nextValue++))
-    fun removeAt(position: Int) = items.removeAt(position)
-    fun createIdSnapshot(): List<Long> = (0 until size).map { position -> itemId(position) }
+    fun getItemById(id: Long): String {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.getItemById()")
+
+        return items.first {
+            itemToLong(it) == id
+        }
+    }
+    fun itemId(position: Int): Long {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.itemId()")
+
+        return itemToLong(items[position])
+    }
+    fun contains(itemId: Long): Boolean {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.contains()")
+
+        return items.any {
+            itemToLong(it) == itemId
+        }
+    }
+    fun addNewAt(position: Int) {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.addNewAt()")
+
+        items.add(position, longToItem(nextValue++))
+    }
+    fun removeAt(position: Int) {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.removeAt()")
+
+        items.removeAt(position)
+    }
+    fun createIdSnapshot(): List<Long> {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.createIdSnapshot()")
+
+        return (0 until size).map { position -> itemId(position) }
+    }
     val size: Int get() = items.size
 
-    private fun longToItem(value: Long): String = "item#$value"
-    private fun itemToLong(value: String): Long = value.split("#")[1].toLong()
+    private fun longToItem(value: Long): String {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.longToItem()")
+
+        return "item#$value"
+    }
+    private fun itemToLong(value: String): Long {
+        Log.i(ItemsViewModel_TAG, "ItemsViewModel.itemToLong()")
+
+        return value.split("#")[1].toLong()
+    }
 }

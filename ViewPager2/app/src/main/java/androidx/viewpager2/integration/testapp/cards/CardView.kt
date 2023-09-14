@@ -46,6 +46,8 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
      * Updates the view to represent the passed in card
      */
     fun bind(card: Card) {
+        Log.i(CardView_TAG, "CardView.bind()")
+
         textSuite.text = card.suit
         view.setBackgroundResource(getColorRes(card))
 
@@ -56,12 +58,16 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
 
     @ColorRes
     private fun getColorRes(card: Card): Int {
+        Log.i(CardView_TAG, "CardView.getColorRes()")
+
         val shade = getShade(card)
         val color = getColor(card)
         return COLOR_MAP[color][shade]
     }
 
     private fun getShade(card: Card): Int {
+        Log.i(CardView_TAG, "CardView.getShade()")
+
         when (card.value) {
             "2", "6", "10", "A" -> return 2
             "3", "7", "J" -> return 3
@@ -72,6 +78,8 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
     }
 
     private fun getColor(card: Card): Int {
+        Log.i(CardView_TAG, "CardView.getColor()")
+
         when (card.suit) {
             "♣" -> return 0
             "♦" -> return 1

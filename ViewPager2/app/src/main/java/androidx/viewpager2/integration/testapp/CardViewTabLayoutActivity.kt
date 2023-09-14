@@ -34,6 +34,8 @@ class CardViewTabLayoutActivity : CardViewActivity() {
     override val layoutId: Int = R.layout.activity_tablayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(CardViewTabLayoutActivity_TAG, "CardViewTabLayoutActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
 
         tabLayout = findViewById(R.id.tabs)

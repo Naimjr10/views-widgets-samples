@@ -75,6 +75,8 @@ abstract class BaseCardActivity : FragmentActivity() {
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(BaseCardActivity_TAG, "BaseCardActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
 
@@ -104,6 +106,8 @@ abstract class BaseCardActivity : FragmentActivity() {
     }
 
     private fun createCardAdapter(): SpinnerAdapter {
+        Log.i(BaseCardActivity_TAG, "BaseCardActivity.createCardAdapter()")
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Card.DECK)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         return adapter

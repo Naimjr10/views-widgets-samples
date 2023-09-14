@@ -34,6 +34,8 @@ open class CardViewActivity : BaseCardActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(CardViewActivity_TAG, "CardViewActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         viewPager.adapter = CardViewAdapter()
     }

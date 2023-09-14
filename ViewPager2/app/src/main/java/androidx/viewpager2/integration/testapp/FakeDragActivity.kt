@@ -48,6 +48,8 @@ class FakeDragActivity : FragmentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(FakeDragActivity_TAG, "FakeDragActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fakedrag)
         landscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -64,14 +66,20 @@ class FakeDragActivity : FragmentActivity() {
     }
 
     private fun mirrorInRtl(f: Float): Float {
+        Log.i(FakeDragActivity_TAG, "FakeDragActivity.mirrorInRtl()")
+
         return if (isRtl) -f else f
     }
 
     private fun getValue(event: MotionEvent): Float {
+        Log.i(FakeDragActivity_TAG, "FakeDragActivity.getValue()")
+
         return if (landscape) event.y else mirrorInRtl(event.x)
     }
 
     private fun handleOnTouchEvent(event: MotionEvent): Boolean {
+        Log.i(FakeDragActivity_TAG, "FakeDragActivity.handleOnTouchEvent()")
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 lastValue = getValue(event)

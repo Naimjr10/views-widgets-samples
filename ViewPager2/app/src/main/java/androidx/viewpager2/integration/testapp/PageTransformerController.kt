@@ -40,6 +40,8 @@ class PageTransformerController(private val viewPager: ViewPager2, private val s
     }
 
     fun setUp() {
+        Log.i(PageTransformerController_TAG, "PageTransformerController.setUp()")
+
         val transformers = listOf(
             "None" to ViewPager2.PageTransformer { _, _ -> /* no op */ },
             "Margin 50px" to MarginPageTransformer(50),

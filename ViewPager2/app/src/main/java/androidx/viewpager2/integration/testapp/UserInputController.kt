@@ -28,6 +28,8 @@ class UserInputController(private val viewPager: ViewPager2, private val disable
     }
 
     fun setUp() {
+        Log.i(UserInputController_TAG, "UserInputController.setUp()")
+
         disableBox.isChecked = !viewPager.isUserInputEnabled
         disableBox.setOnCheckedChangeListener { _, isDisabled ->
             viewPager.isUserInputEnabled = !isDisabled

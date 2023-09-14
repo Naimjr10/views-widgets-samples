@@ -41,6 +41,9 @@ class MutableCollectionViewActivity : MutableCollectionBaseActivity() {
     }
 
     override fun createViewPagerAdapter(): RecyclerView.Adapter<*> {
+        Log.i(MutableCollectionViewActivity_TAG,
+            "MutableCollectionViewActivity.createViewPagerAdapter()")
+
         val items = items // avoids resolving the ViewModel multiple times
         val clickRegistry: ClickRegistry by viewModels()
         return object : RecyclerView.Adapter<PageViewHolder>() {
@@ -72,6 +75,8 @@ class PageViewHolder(parent: ViewGroup) :
     private val buttonCountIncrease: Button = itemView.findViewById(R.id.buttonCountIncrease)
 
     fun bind(itemText: String, registerClick: () -> Unit, getClickCount: () -> Int) {
+        Log.i(PageViewHolder_TAG, "PageViewHolder.bind()")
+
         textViewItemId.text = itemText
         val updateClickText = { textViewCount.text = "${getClickCount()}" }
         updateClickText()
@@ -93,6 +98,14 @@ class ClickRegistry : ViewModel() {
     }
 
     private val clickCount = mutableMapOf<Long, Int>()
-    fun getClickCount(itemId: Long): Int = clickCount[itemId] ?: 0
-    fun registerClick(itemId: Long) = clickCount.set(itemId, 1 + getClickCount(itemId))
+    fun getClickCount(itemId: Long): Int {
+        Log.i(ClickRegistry_TAG, "ClickRegistry.getClickCount()")
+
+        return clickCount[itemId] ?: 0
+    }
+    fun registerClick(itemId: Long) {
+        Log.i(ClickRegistry_TAG, "ClickRegistry.registerClick()")
+
+        clickCount.set(itemId, 1 + getClickCount(itemId))
+    }
 }

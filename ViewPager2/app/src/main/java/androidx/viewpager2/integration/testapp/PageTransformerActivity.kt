@@ -34,6 +34,8 @@ class PageTransformerActivity : FragmentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(PageTransformerActivity_TAG, "PageTransformerActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page_transformer)
 

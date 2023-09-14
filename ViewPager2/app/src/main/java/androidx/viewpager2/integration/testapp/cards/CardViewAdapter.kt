@@ -30,14 +30,20 @@ class CardViewAdapter : RecyclerView.Adapter<CardViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        Log.i(CardViewAdapter_TAG, "CardViewAdapter.onCreateViewHolder()")
+
         return CardViewHolder(CardView(LayoutInflater.from(parent.context), parent))
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        Log.i(CardViewAdapter_TAG, "CardViewAdapter.onBindViewHolder()")
+
         holder.bind(Card.DECK[position])
     }
 
     override fun getItemCount(): Int {
+        Log.i(CardViewAdapter_TAG, "CardViewAdapter.getItemCount()")
+
         return Card.DECK.size
     }
 }
@@ -50,6 +56,8 @@ class CardViewHolder internal constructor(private val cardView: CardView) :
     }
 
     internal fun bind(card: Card) {
+        Log.i(CardViewHolder_TAG, "CardViewHolder.bind()")
+
         cardView.bind(card)
     }
 }

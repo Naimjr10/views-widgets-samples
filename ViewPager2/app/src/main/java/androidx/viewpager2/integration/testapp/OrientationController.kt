@@ -35,6 +35,8 @@ class OrientationController(private val viewPager: ViewPager2, private val spinn
     }
 
     fun setUp() {
+        Log.i(OrientationController_TAG, "OrientationController.setUp()")
+
         val orientation = viewPager.orientation
         val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item,
             arrayOf(HORIZONTAL, VERTICAL))
@@ -61,6 +63,8 @@ class OrientationController(private val viewPager: ViewPager2, private val spinn
     }
 
     private fun orientationToString(orientation: Int): String {
+        Log.i(OrientationController_TAG, "OrientationController.orientationToString()")
+
         return when (orientation) {
             ViewPager2.ORIENTATION_HORIZONTAL -> HORIZONTAL
             ViewPager2.ORIENTATION_VERTICAL -> VERTICAL
@@ -69,6 +73,8 @@ class OrientationController(private val viewPager: ViewPager2, private val spinn
     }
 
     internal fun stringToOrientation(string: String): Int {
+        Log.i(OrientationController_TAG, "OrientationController.stringToOrientation()")
+
         return when (string) {
             HORIZONTAL -> ViewPager2.ORIENTATION_HORIZONTAL
             VERTICAL -> ViewPager2.ORIENTATION_VERTICAL

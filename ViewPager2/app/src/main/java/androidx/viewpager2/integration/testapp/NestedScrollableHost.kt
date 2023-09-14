@@ -63,6 +63,8 @@ class NestedScrollableHost : FrameLayout {
     }
 
     private fun canChildScroll(orientation: Int, delta: Float): Boolean {
+        Log.i(NestedScrollableHost_TAG, "NestedScrollableHost.canChildScroll()")
+
         val direction = -delta.sign.toInt()
         return when (orientation) {
             0 -> child?.canScrollHorizontally(direction) ?: false
@@ -72,11 +74,15 @@ class NestedScrollableHost : FrameLayout {
     }
 
     override fun onInterceptTouchEvent(e: MotionEvent): Boolean {
+        Log.i(NestedScrollableHost_TAG, "NestedScrollableHost.onInterceptTouchEvent()")
+
         handleInterceptTouchEvent(e)
         return super.onInterceptTouchEvent(e)
     }
 
     private fun handleInterceptTouchEvent(e: MotionEvent) {
+        Log.i(NestedScrollableHost_TAG, "NestedScrollableHost.handleInterceptTouchEvent()")
+
         val orientation = parentViewPager?.orientation ?: return
 
         // Early return if child can't scroll in same direction as parent

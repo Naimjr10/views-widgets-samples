@@ -28,7 +28,6 @@ import androidx.viewpager2.integration.testapp.cards.Card
 import androidx.viewpager2.integration.testapp.cards.CardView
 import androidx.viewpager2.integration.testapp.tag.CardFragmentActivity_CardFragment_TAG
 import androidx.viewpager2.integration.testapp.tag.CardFragmentActivity_TAG
-import androidx.viewpager2.integration.testapp.tag.CardFragment_TAG
 
 /**
  * Shows how to use a [androidx.viewpager2.widget.ViewPager2] with Fragments, via a
@@ -44,6 +43,8 @@ class CardFragmentActivity : BaseCardActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(CardFragmentActivity_TAG, "CardFragmentActivity.onCreate()")
+
         super.onCreate(savedInstanceState)
 
         viewPager.adapter = object : FragmentStateAdapter(this) {
@@ -68,6 +69,9 @@ class CardFragmentActivity : BaseCardActivity() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
+            Log.i(CardFragmentActivity_CardFragment_TAG,
+                "CardFragmentActivity.CardFragment.onCreateView()")
+
             val cardView = CardView(layoutInflater, container)
             cardView.bind(Card.fromBundle(arguments!!))
             return cardView.view
@@ -77,6 +81,9 @@ class CardFragmentActivity : BaseCardActivity() {
 
             /** Creates a Fragment for a given [Card]  */
             fun create(card: Card): CardFragment {
+                Log.i(CardFragmentActivity_CardFragment_TAG,
+                    "CardFragmentActivity.CardFragment.Companion.create()")
+
                 val fragment = CardFragment()
                 fragment.arguments = card.toBundle()
                 return fragment
